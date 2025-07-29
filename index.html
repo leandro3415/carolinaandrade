@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecionando...</title>
+  <style>
+    body {
+      background-color: #FFFFFF;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .loading {
+      animation: rotate 1s linear infinite;
+      border: 5px solid #F3F3F3;
+      border-top: 5px solid #3498DB;
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      margin: 20px auto;
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
+    }
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 24px;
+    }
+  </style>
+  <script>
+    // Lista de números
+    const numeros = [
+      '558896874073',
+      '558896870121',
+	  '558896869987',
+	  '558896871426'
+    ];
+
+    // Lista de 8 mensagens (já codificadas para URL)
+    const mensagens = [
+      'Oi%2C%20vi%20que%20você%20tem%20conteúdos%20interessantes.%20Pode%20me%20mostrar%3F',
+      'Oii%2C%20curti%20seu%20perfil%20e%20quero%20ver%20seus%20conteúdos%20%F0%9F%91%80',
+      'Eai%21%20Pode%20me%20mandar%20seus%20conteúdos%3F%20Fiquei%20curioso%28a%29%20%F0%9F%98%84',
+      'Oi%2C%20tudo%20bem%3F%20Quero%20dar%20uma%20olhada%20no%20seu%20conteúdo',
+      'Olá%2C%20vi%20algo%20interessante%20por%20aqui%20e%20quero%20ver%20seus%20conteúdos%21',
+      'Opa%21%20Me%20manda%20seus%20conteúdos%20por%20favor%2C%20t%C3%B4%20curioso%28a%29%20%F0%9F%98%89',
+      'Oi%2C%20cheguei%20aqui%20por%20indica%C3%A7%C3%A3o%2C%20me%20envia%20seus%20conte%C3%BAdos%20%F0%9F%91%8D',
+      'Quero%20ver%20o%20que%20voc%C3%AA%20tem%20de%20bom%20a%C3%AD%20%F0%9F%98%81%20Pode%20mandar%3F'
+    ];
+
+    // Redireciona aleatoriamente
+    function redirecionar() {
+      const numero = numeros[Math.floor(Math.random() * numeros.length)];
+      const mensagem = mensagens[Math.floor(Math.random() * mensagens.length)];
+      const link = 'https://wa.me/' + numero + '?text=' + mensagem;
+      window.location.href = link;
+    }
+
+    // Facebook Pixel
+    function enviarPixel() {
+      fbq('track', 'PageView');
+    }
+  </script>
+
+  <!-- Pixel do Facebook -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '724620673521299');
+    fbq('track', 'PageView');
+  </script>
+</head>
+<body onload="setTimeout(redirecionar, 5000); enviarPixel();">
+  <div class="loading"></div>
+  <h1>Aguarde alguns segundos, vou liberar o que prometi para você...</h1>
+</body>
+</html>
+
